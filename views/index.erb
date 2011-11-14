@@ -1,0 +1,27 @@
+<script id="taskTemplate" type="text/html">
+  <div class="clearfix" data-bind="mapMarker: {lat: lat(), lng: lng(), title: name(), map: window.viewModel.map}">
+    <div class="input-prepend">
+      <label class="add-on" data-bind="css: { active: window.viewModel.currentTaskId() == id }">
+        <input type="checkbox" data-bind="checked: completed"/>
+      </label>
+      <input class="span3" type="text" id name size="16" placeholder="New Task" style="height: 28px" data-bind="value: name"/>
+    </div>
+    <button class="btn secondary" data-bind="click: window.viewModel.setActive">Edit</button>
+  </div>
+</script>
+
+<div class="container-fluid" style="margin-top: 40px">
+  <div class="sidebar span8">
+    <h1> GeoTasks </h1>
+    <form>
+      <div id='tasks' data-bind="template: {name: 'taskTemplate', foreach: tasks}">
+      </div>
+    </form>
+
+    <div class="clearfix">
+      <button class="btn primary on-bottom" data-bind="click: createTask">Add Task</button>
+    </div>
+  </div>
+  <div class="content" id="map_canvas">
+  </div>
+</div>
