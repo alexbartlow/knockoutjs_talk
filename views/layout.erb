@@ -2,25 +2,28 @@
   <head>
     <link rel="stylesheet" href="/bootstrap.min.css">
     <link rel="stylesheet" href="/application.css">
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true"></script>
     <script type="text/javascript" src="/jquery.min.js"></script>
-    <script type="text/javascript" src="/jquery.tmpl.min.js"></script>
-    <script type="text/javascript" src="/ko.js"></script>
-    <script type="text/javascript" src="/ko.mapping.js"></script>
+    <script type="text/javascript" src="/modernizr.js"></script>
 
-    <script type="text/javascript" src="/coffeescripts/google_maps_binding"></script>
-    <script type="text/javascript" src="/coffeescripts/application"></script>
     <title>Knockout.JS - CRB Columbus</title>
   </head>
 
   <body>
-    <div class="topbar">
+    <header class="topbar">
       <div class="topbar-inner">
         <div class="container">
           <a href="#" class="brand">Knockout.JS- CRB Columbus</a>
+          <ul class="nav">
+            <li <% if request.path == '/' %>class="active"<% end %>>
+              <a href="/">Demo</a>
+            </li>
+            <li <% if request.path == '/deck' %>class="active"<% end %>>
+              <a href="/deck">Deck</a>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
+    </header>
     <%= yield %>
   </body>
 </html>
