@@ -30,21 +30,21 @@ $ ->
     window.viewModel.setActive.apply(task)
     window.viewModel.tasks.push task
 
-  window.viewModel.handleClickEvent = (event) ->
-    inner_handler = (item) ->
-      item.lat(event.latLng.lat())
-      item.lng(event.latLng.lng())
-
-    inner_handler item for item in window.viewModel.tasks() when item.id is window.viewModel.currentTaskId()
-
   window.viewModel.setActive = (event) ->
     window.viewModel.currentTaskId @id
+    if event? && event.latLng?
+      inner_handler = (item) ->
+        item.lat(event.latLng.lat())
+        item.lng(event.latLng.lng())
 
+      inner_handler item for item in window.viewModel.tasks() when item.id is window.viewModel.currentTaskId()
+
+  window.viewModel.save = ->
+    console.log("Save stub")
 
   # setup
   $(document).on 'submit', 'form', ->
     false
 
-  google.maps.event.addListener window.viewModel.map, 'click', window.viewModel.handleClickEvent
   ko.applyBindings window.viewModel
 

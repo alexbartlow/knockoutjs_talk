@@ -8,8 +8,6 @@ ko.bindingHandlers.mapMarker =
     handler = window.viewModel.setActive.bind(model)
     google.maps.event.addListener model.marker, 'click', handler
     google.maps.event.addListener model.marker, 'dragstart', handler
-
-    handler = window.viewModel.handleClickEvent.bind(model)
     google.maps.event.addListener model.marker, 'dragend', handler
 
   update: (elt, valueAccessor, allBindings, model) ->
