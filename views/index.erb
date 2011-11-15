@@ -6,23 +6,23 @@
 <script type="text/javascript" src="/coffeescripts/application"></script>
 
 <script id="taskTemplate" type="text/html">
-  <div class="clearfix" data-bind="mapMarker: {lat: lat(), lng: lng(), title: name(), map: window.viewModel.map}">
+  <div class="clearfix" data-bind="mapMarker: {lat: lat(), lng: lng(), title: name(), isActive: isActive(), map: window.viewModel.map}">
     <div class="input-prepend">
-      <label class="add-on" data-bind="css: { active: window.viewModel.currentTaskId() == id }">
+      <label class="add-on" data-bind="css: { active: isActive() }">
         <input type="checkbox" data-bind="checked: completed"/>
       </label>
       <input class="span3" type="text" id name size="16" placeholder="New Task" style="height: 28px" data-bind="value: name"/>
     </div>
 
     <div class="input-prepend">
-      <label class="add-on" data-bind="css: { active: window.viewModel.currentTaskId() == id }">
+      <label class="add-on" data-bind="css: { active: isActive() }">
         Lat
       </label>
       <input class="span3" type="text" id name size="16" style="height: 28px" data-bind="value: lat"/>
     </div>
 
     <div class="input-prepend">
-      <label class="add-on" data-bind="css: { active: window.viewModel.currentTaskId() == id }">
+      <label class="add-on" data-bind="css: { active: isActive() }">
         Lng
       </label>
       <input class="span3" type="text" id name size="16" style="height: 28px" data-bind="value: lng"/>

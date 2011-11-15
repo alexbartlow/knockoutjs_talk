@@ -24,10 +24,11 @@ $ ->
       lat: pos.lat()
       lng: pos.lng()
 
+    task.isActive = ->
+      window.viewModel.currentTaskId() is @id
+    
+    window.viewModel.setActive.apply(task)
     window.viewModel.tasks.push task
-
-  window.viewModel.isActive  = ->
-    window.viewModel.currentTaskId() is this.id
 
   window.viewModel.handleClickEvent = (event) ->
     inner_handler = (item) ->
@@ -37,7 +38,7 @@ $ ->
     inner_handler item for item in window.viewModel.tasks() when item.id is window.viewModel.currentTaskId()
 
   window.viewModel.setActive = (event) ->
-    window.viewModel.currentTaskId(this.id)
+    window.viewModel.currentTaskId @id
 
 
   # setup
