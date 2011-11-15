@@ -1,0 +1,28 @@
+script(type="text/javascript" src='/deck.core.js')
+script(type="text/javascript" src='/deck.status.js')
+script(type="text/javascript" src='/deck.hash.js')
+
+link(rel="stylesheet" href="/deck.core.css")
+link(rel="stylesheet" href="/swiss.css")
+
+
+article#deck.deck-container
+  section.slide
+    h1 How to win at interfaces
+
+  section.slide
+    h1 User Stories
+
+  section.slide
+    h1
+      | I want to 
+      span#verbs.slide
+        | View
+      span#nouns.slide
+        | Pictures of Cats
+  section.slide
+    img(src="http://placekitten.com/600/375" alt="Kitties")
+
+  section.slide
+
+script(type="text/javascript") $.deck('.slide', {});

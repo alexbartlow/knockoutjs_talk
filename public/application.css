@@ -1,3 +1,6 @@
 #map_canvas {
   height: 90%;
 }
+.input-prepend .active, .input-append .active {
+  color: #003600;
+}

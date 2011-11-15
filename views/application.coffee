@@ -1,27 +1,28 @@
-$ ->
-  window.S4 = ->
-    (((1+Math.random())*0x10000)|0).toString(16).substring(1)
-  window.guid = ->
-    (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4())
+window.S4 = ->
+  (((1+Math.random())*0x10000)|0).toString(16).substring(1)
+window.guid = ->
+  (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4())
 
+$ ->
+  # Nouns
   window.viewModel = ko.mapping.fromJS
     tasks: []
     currentTaskId: null
 
-  mapOptions =
+  window.viewModel.map = new google.maps.Map document.getElementById('map_canvas'),
     zoom: 4
     mapTypeId: google.maps.MapTypeId.ROADMAP
     center: new google.maps.LatLng(40.69847032728747, -73.9514422416687)
 
-  window.viewModel.map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions)
-
+  # Verbs
   window.viewModel.createTask = ->
+    pos = window.viewModel.map.getCenter()
     task = ko.mapping.fromJS
       id: window.guid()
       name: ""
       completed: false
-      lat: 0.0
-      lng: 0.0
+      lat: pos.lat()
+      lng: pos.lng()
 
     window.viewModel.tasks.push task
 
@@ -38,9 +39,11 @@ $ ->
   window.viewModel.setActive = (event) ->
     window.viewModel.currentTaskId(this.id)
 
+
+  # setup
   $(document).on 'submit', 'form', ->
     false
 
-  ko.applyBindings window.viewModel
   google.maps.event.addListener window.viewModel.map, 'click', window.viewModel.handleClickEvent
+  ko.applyBindings window.viewModel
 

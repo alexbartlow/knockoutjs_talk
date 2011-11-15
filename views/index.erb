@@ -13,6 +13,20 @@
       </label>
       <input class="span3" type="text" id name size="16" placeholder="New Task" style="height: 28px" data-bind="value: name"/>
     </div>
+
+    <div class="input-prepend">
+      <label class="add-on" data-bind="css: { active: window.viewModel.currentTaskId() == id }">
+        Lat
+      </label>
+      <input class="span3" type="text" id name size="16" style="height: 28px" data-bind="value: lat"/>
+    </div>
+
+    <div class="input-prepend">
+      <label class="add-on" data-bind="css: { active: window.viewModel.currentTaskId() == id }">
+        Lng
+      </label>
+      <input class="span3" type="text" id name size="16" style="height: 28px" data-bind="value: lng"/>
+    </div>
     <button class="btn secondary" data-bind="click: window.viewModel.setActive">Edit</button>
   </div>
 </script>
