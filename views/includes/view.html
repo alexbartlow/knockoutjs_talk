@@ -1,0 +1,11 @@
+[span class="binding-template"]<script type="text/html" id="cat_template">
+  <li class="cat">
+    <a data-bind="[span class="binding-event"]click: showCat(id)[/span], [span class="binding-value"]text: name[/span]"></a>
+  </li>
+</script>
+[/span class="binding-template"]
+
+<ul data-bind="[span class="binding-template"]template: {name: 'cat_template', foreach: cats[/span]}">
+</ul>
+
+<img data-bind="[span class="binding-attr"]src: currentCat().src[/span]"/>

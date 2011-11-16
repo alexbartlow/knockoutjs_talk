@@ -11,18 +11,94 @@ article#deck.deck-container
     h1 How to win at interfaces
 
   section.slide
+    h1 MVVM
+  section.slide
+    h1 Model = Business Logic
+  section.slide
+    h1 View = Markup / Presentation
+  section.slide
+    h1 ViewModel = Page Logic
+  section.slide
     h1 User Stories
 
   section.slide
     h1
-      | I want to 
+      | I want
       span#verbs.slide
-        | View
+        | to View
       span#nouns.slide
         | Pictures of Cats
-  section.slide
-    img(src="http://placekitten.com/600/375" alt="Kitties")
+        img(src="http://placekitten.com/100/100" alt="Kitties")
 
   section.slide
+    div.row
+      div.span6
+        ol
+          li.slide#vm-nouns-slide
+            | Nouns provide the Things the page is concerned with
+          li.slide#vm-verbs-slide
+            | Verbs provide the Actions the page should perform
+          li.slide#vm-mapping-slide
+            | We can map our Nouns into the ViewModel, or use JS Models
+      div.span10
+        pre
+          == File.read './views/includes/viewmodel.coffee'
+
+  section.slide
+    div.row
+      div.span6
+        ol
+          li.slide#view-binding-value
+            | Views declare dynamic content declaratively
+          li.slide#view-binding-attr
+            | Elements can declare bindings to other things too
+          li.slide#view-binding-event
+            | You can bind Verbs to DOM Actions
+          li.slide#view-binding-template
+            | Declare your view templates in-line
+      div.span10
+        pre
+          == File.slideify './views/includes/view.html'
+  section.slide
+    div.row
+      div.span6
+        h3 Models are just models
+        pre
+          == File.read './views/includes/model.coffee'
+      div.span10
+        img(src="/images/freud.jpg")
+  section.slide
+    h2 Why?
+    ol
+      li.slide
+        h3 Dependency Tracking
+        p Only update the right parts of your view when it changes
+      li.slide
+        h3 Extensible
+        p Write your own custom bindings easily (Example later!)
+      li.slide
+        h3 Clean
+        p No 'glue code' to write - only declarative bindings
+  section.slide
+    h2 Benefits
+    ol
+      li.slide
+        h3 Unit Testing
+        p Your viewModel encapsulates all the logic on the page - use Jasmine
+      li.slide
+        h3 ViewModels = Page Objects
+        p Test it server-side with cucumber, no JS runtime needed
+      li.slide
+        h3 Pure Client-side
+        p Once it's in the browser - nice and snappy
+  section.slide
+    h1 Demo
+  section.slide
+    h2 Questions?
+    ul
+      li Alex Bartlow
+      li @alexbartlow
+      li bartlowa@gmail.com
+      li http://github.com/alexbartlow/KnockoutJS-Talk
 
 script(type="text/javascript") $.deck('.slide', {});

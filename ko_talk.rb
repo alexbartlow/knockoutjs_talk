@@ -5,6 +5,10 @@ require 'sinatra'
 require 'coffee-script'
 require 'slim'
 
+def File.slideify(path)
+  File.read(path).gsub(/</, '&lt;').gsub(/>/, '&gt;').gsub(/\[/, '<').gsub(/\]/, '>')
+end
+
 set :slim, :layout_engine => :erb, :layout => :layout
 
 get '/' do
