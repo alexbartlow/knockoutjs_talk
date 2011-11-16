@@ -4,6 +4,7 @@ script(type="text/javascript" src='/deck.hash.js')
 
 link(rel="stylesheet" href="/deck.core.css")
 link(rel="stylesheet" href="/swiss.css")
+link(rel="stylesheet" href="/deck.css")
 
 
 article#deck.deck-container
@@ -33,12 +34,12 @@ article#deck.deck-container
   section.slide
     div.row
       div.span6
-        ol
-          li.slide#vm-nouns-slide
+        ul
+          li.slide#vm-nouns
             | Nouns provide the Things the page is concerned with
-          li.slide#vm-verbs-slide
+          li.slide#vm-verbs
             | Verbs provide the Actions the page should perform
-          li.slide#vm-mapping-slide
+          li.slide#vm-mapping
             | We can map our Nouns into the ViewModel, or use JS Models
       div.span10
         pre
@@ -47,7 +48,7 @@ article#deck.deck-container
   section.slide
     div.row
       div.span6
-        ol
+        ul
           li.slide#view-binding-value
             | Views declare dynamic content declaratively
           li.slide#view-binding-attr
@@ -59,14 +60,20 @@ article#deck.deck-container
       div.span10
         pre
           == File.slideify './views/includes/view.html'
-  section.slide
+  section.slide#models
     div.row
-      div.span6
-        h3 Models are just models
-        pre
-          == File.read './views/includes/model.coffee'
-      div.span10
-        img(src="/images/freud.jpg")
+      div.span8
+        div
+          h3 Models are just objects
+          pre
+            == File.read './views/includes/model.coffee'
+        div.slide#fancymodels
+          h3 Unless they aren't
+          pre
+            == File.read './views/includes/fancy_model.coffee'
+      div.span8
+        img#freud(src="/images/freud.jpg")
+        img#malinowski(src="/images/malinowski.jpg")
   section.slide
     h2 Why?
     ol

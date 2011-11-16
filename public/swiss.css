@@ -73,15 +73,3 @@
 .deck-container.deck-menu .deck-current, .no-touch .deck-container.deck-menu .slide:hover {
   background: #ddf;
 }
-
-span.slide {
-  padding-left: 0.3em;
-}
-
-.deck-container {
-  width: auto;
-  max-width: 960px;
-  margin: 56px auto 24px auto;
-  height: 600px;
-  font-size: 16px;
-}
