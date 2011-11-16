@@ -1,0 +1,62 @@
+
+  window.S4 = function() {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+  };
+
+  window.guid = function() {
+    return S4() + S4() + "-" + S4() + "-" + S4() + "-" + S4() + "-" + S4() + S4() + S4();
+  };
+
+  $(function() {
+    window.viewModel = ko.mapping.fromJS({
+      tasks: [],
+      currentTaskId: null
+    });
+    window.viewModel.map = new google.maps.Map(document.getElementById('map_canvas'), {
+      zoom: 4,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      center: new google.maps.LatLng(40.69847032728747, -73.9514422416687)
+    });
+    window.viewModel.createTask = function() {
+      var pos, task;
+      pos = window.viewModel.map.getCenter();
+      task = ko.mapping.fromJS({
+        id: window.guid(),
+        name: "",
+        completed: false,
+        lat: pos.lat(),
+        lng: pos.lng()
+      });
+      task.isActive = function() {
+        return window.viewModel.currentTaskId() === this.id;
+      };
+      window.viewModel.setActive.apply(task);
+      return window.viewModel.tasks.push(task);
+    };
+    window.viewModel.setActive = function(event) {
+      var inner_handler, item, _i, _len, _ref, _results;
+      window.viewModel.currentTaskId(this.id);
+      if ((event != null) && (event.latLng != null)) {
+        inner_handler = function(item) {
+          item.lat(event.latLng.lat());
+          return item.lng(event.latLng.lng());
+        };
+        _ref = window.viewModel.tasks();
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          item = _ref[_i];
+          if (item.id === window.viewModel.currentTaskId()) {
+            _results.push(inner_handler(item));
+          }
+        }
+        return _results;
+      }
+    };
+    window.viewModel.save = function() {
+      return console.log("Save stub");
+    };
+    $(document).on('submit', 'form', function() {
+      return false;
+    });
+    return ko.applyBindings(window.viewModel);
+  });

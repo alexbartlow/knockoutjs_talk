@@ -1,0 +1,39 @@
+span.slide {
+  padding-left: 0.3em;
+}
+
+.deck-container {
+  width: auto;
+  max-width: 960px;
+  margin: 56px auto 24px auto;
+  height: 600px;
+  font-size: 16px;
+}
+
+.on-slide-vm-nouns .vm-nouns { color: red }
+.on-slide-vm-verbs .vm-verbs { color: red }
+.on-slide-vm-mapping .vm-mapping { color: red }
+
+.on-slide-view-binding-value .binding-value { color: red }
+.on-slide-view-binding-event .binding-event { color: red }
+.on-slide-view-binding-attr  .binding-attr { color: red }
+.on-slide-view-binding-template .binding-template { color: red }
+
+.deck-current, .deck-current * {
+  color: black !important
+}
+
+#freud { display: none; }
+#malinowski {
+  display: none;
+  height: 400px;
+}
+ul { list-style-type: none !important }
+
+.on-slide-models #freud {
+  display: block;
+}
+
+.on-slide-fancymodels #malinowski {
+  display: block;
+}
